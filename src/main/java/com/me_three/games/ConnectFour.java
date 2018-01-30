@@ -1,3 +1,5 @@
+package com.me_three.games;
+
 import java.util.StringJoiner;
 
 public class ConnectFour {

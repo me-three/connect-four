@@ -1,3 +1,5 @@
+package com.me_three.games;
+
 import org.junit.Before;
 import org.junit.Test;
 
