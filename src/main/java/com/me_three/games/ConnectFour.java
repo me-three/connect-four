@@ -8,7 +8,7 @@ public class ConnectFour {
     private static final int COLUMNS = 7;
     private static final int WIN_LENGTH = 4;
 
-    private int[] board = new int[ROWS * COLUMNS];
+    private final int[] board = new int[ROWS * COLUMNS];
 
     ConnectFour() {
         reset();
@@ -89,11 +89,11 @@ public class ConnectFour {
         }
     }
 
-    int cell(int row, int column) {
+    int cell(final int row, final int column) {
         return board[row * COLUMNS + column];
     }
 
-    void setCell(int row, int column, int player) {
+    void setCell(final int row, final int column, final int player) {
         board[row * COLUMNS + column] = player;
     }
 
@@ -109,7 +109,7 @@ public class ConnectFour {
         return sb.toString();
     }
 
-    private static String playerGlyph(int value) {
+    private static String playerGlyph(final int value) {
         switch (value) {
             case 1:
                 return "R";
@@ -137,42 +137,42 @@ public class ConnectFour {
         return ROWS - 1;
     }
 
-    boolean isWinIfPlaced(int row, int column, int player) {
+    boolean isWinIfPlaced(final int row, final int column, final int player) {
         return getLeft(row, column, player) + 1 + getRight(row, column, player) >= WIN_LENGTH
                 || getDown(row, column, player) + 1 >= WIN_LENGTH
                 || getDownLeft(row, column, player) + 1 + getUpRight(row, column, player) >= WIN_LENGTH
                 || getDownRight(row, column, player) + 1 + getUpLeft(row, column, player) >= WIN_LENGTH;
     }
 
-    int getLeft(int row, int column, int player) {
+    final int getLeft(final int row, final int column, final int player) {
         return getCount(row, column, player, 0, -1);
     }
 
-    int getRight(int row, int column, int player) {
+    final int getRight(final int row, final int column, final int player) {
         return getCount(row, column, player, 0, 1);
     }
 
-    int getDown(int row, int column, int player) {
+    final int getDown(final int row, final int column, final int player) {
         return getCount(row, column, player, 1, 0);
     }
 
-    int getDownLeft(int row, int column, int player) {
+    final int getDownLeft(final int row, final int column, final int player) {
         return getCount(row, column, player, 1, -1);
     }
 
-    int getDownRight(int row, int column, int player) {
+    final int getDownRight(final int row, final int column, final int player) {
         return getCount(row, column, player, 1, 1);
     }
 
-    int getUpLeft(int row, int column, int player) {
+    final int getUpLeft(final int row, final int column, final int player) {
         return getCount(row, column, player, -1, -1);
     }
 
-    int getUpRight(int row, int column, int player) {
+    final int getUpRight(final int row, final int column, final int player) {
         return getCount(row, column, player, -1, 1);
     }
 
-    private int getCount(int row, int column, int player, int deltaRow, int deltaColumn) {
+    private int getCount(int row, int column, final int player, final int deltaRow, final int deltaColumn) {
         int count = 0;
         row += deltaRow;
         column += deltaColumn;
